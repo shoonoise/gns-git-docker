@@ -21,6 +21,7 @@ docker run  -d -e KEY="`cat ~/.ssh/id_rsa.pub`" -p 2222:2222 git-srv
 ```
 
 After that you can commit to you container:
+
 ```bash
 cd project
 git init
@@ -28,4 +29,5 @@ touch README.md
 git add README.md
 git commit -m "Init"
 git remote add origin git@localhost:2222/gns-rules.git
-git push origin master```
+git push origin master
+```
