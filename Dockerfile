@@ -10,17 +10,16 @@ RUN apt-get install -y git openssh-server
 RUN adduser git
 RUN mkdir /home/git/.ssh
 RUN touch /home/git/.ssh/authorized_keys
-RUN chown -R git /home/git/.ssh
 
 RUN mkdir /gns-rules.git
 WORKDIR /gns-rules.git
-RUN chown git /gns-rules.git
 RUN git --bare init
-RUN chown -R git /gns-rules.git
-RUN chown -R git /gns-rules
+ADD post-receive /gns-rules.git/hooks/
 
 RUN mkdir /gns-rules
-ADD post-receive /gns-rules.git/hooks/
+RUN chown -R git /gns-rules
+# Looks like some Docker's issue. `chmod -R git /gns-rules.git` does not work.
+RUN chmod -R 777 /gns-rules.git
 
 ADD sshd_config /etc/ssh/sshd_config
 RUN mkdir /var/run/sshd/

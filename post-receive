@@ -32,8 +32,11 @@ for commit in $commits; do
     echo "Checkout $commit --> $tmp_path"
     git clone $work_tree $tmp_path
     cd $tmp_path
+    unset GIT_DIR
     git checkout -b version-$commit $commit
+    echo "Submodule init"
     git submodule init
+    echo "Submodule update"
     git submodule update
     
     cd $rules_path
@@ -41,4 +44,6 @@ for commit in $commits; do
 done
 
 # Clean up
-(ls -t|head -n $REV_LIMIT;ls)|sort|uniq -u|xargs rm
+if [ `ls | wc -l` > $REV_LIMIT ]; then
+    (ls -t|head -n $REV_LIMIT;ls)|sort|uniq -u|xargs rm -r
+fi
