@@ -4,6 +4,8 @@
 FROM yandex/ubuntu
 MAINTAINER Alexander Kushnarev <avkushnrev@gmail.com>
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update
 RUN apt-get install -y git openssh-server
 
