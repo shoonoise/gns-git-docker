@@ -7,7 +7,7 @@ MAINTAINER Alexander Kushnarev <avkushnrev@gmail.com>
 RUN apt-get update
 RUN apt-get install -y git openssh-server
 
-RUN adduser git
+RUN adduser --disabled-password --gecos "" git
 RUN mkdir /home/git/.ssh
 RUN touch /home/git/.ssh/authorized_keys
 
