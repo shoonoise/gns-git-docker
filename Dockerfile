@@ -26,4 +26,6 @@ RUN mkdir /var/run/sshd/
 RUN chmod 0755 /var/run/sshd
 ADD run.sh /
 
+EXPOSE 22
+
 CMD /run.sh

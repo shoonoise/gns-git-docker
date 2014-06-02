@@ -3,9 +3,7 @@ git-server-docker
 
 Git server over ssh
 
-Server listen `2222` port.
-
-Public-key authentication, keys adds from `$KEYS` variable on start time.
+Public-key authentication, keys adds from `$KEY` variable on start time.
 
 Fast start
 -------
@@ -17,7 +15,7 @@ Start docker container:
 git clone https://github.com/shoonoise/git-server-docker.git
 cd git-server-docker
 docker build -t="srv" .
-docker run  -d -e KEY="`cat ~/.ssh/id_rsa.pub`" -v /tmp/gns-rules:/gns-rules:rw -p 2222:2222 git-srv
+docker run  -d -e KEY="`cat ~/.ssh/id_rsa.pub`" -v /tmp/gns-rules:/gns-rules:rw -p 22:2222 git-srv
 ```
 
 After that you can commit to you container:
@@ -31,4 +29,3 @@ git commit -m "Init"
 git remote add origin ssh://git@localhost:2222/gns-rules.git
 git push origin master
 ```
-
