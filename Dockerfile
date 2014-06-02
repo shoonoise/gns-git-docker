@@ -16,9 +16,11 @@ RUN mkdir /gns-rules.git
 WORKDIR /gns-rules.git
 RUN chown git /gns-rules.git
 RUN git --bare init
+RUN chown -R git /gns-rules.git
+RUN chown -R git /gns-rules
 
 RUN mkdir /gns-rules
-ADD post-createmodules /gns-rules.git/.git/hooks/
+ADD post-receive /gns-rules.git/hooks/
 
 ADD sshd_config /etc/ssh/sshd_config
 RUN mkdir /var/run/sshd/

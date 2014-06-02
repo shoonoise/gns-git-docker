@@ -17,7 +17,7 @@ Start docker container:
 git clone https://github.com/shoonoise/git-server-docker.git
 cd git-server-docker
 docker build -t="srv" .
-docker run  -d -e KEY="`cat ~/.ssh/id_rsa.pub`" -p 2222:2222 git-srv
+docker run  -d -e KEY="`cat ~/.ssh/id_rsa.pub`" -v /tmp/gns-rules:/gns-rules:rw -p 2222:2222 git-srv
 ```
 
 After that you can commit to you container:
@@ -28,6 +28,6 @@ git init
 touch README.md
 git add README.md
 git commit -m "Init"
-git remote add origin git@localhost:2222/gns-rules.git
+git remote add origin ssh://git@localhost:2222/gns-rules.git
 git push origin master
 ```
