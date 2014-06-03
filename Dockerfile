@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 RUN apt-get install -y git openssh-server
 
-RUN adduser --disabled-password --gecos "" git
+RUN adduser --disabled-password --gecos "" --shell=/usr/bin/git-shell  git
 RUN mkdir /home/git/.ssh
 RUN touch /home/git/.ssh/authorized_keys
 
