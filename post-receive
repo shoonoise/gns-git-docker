@@ -48,6 +48,7 @@ done
 
 # Clean up
 if [ `ls | wc -l` -gt $REV_LIMIT ]; then
+    echo "Clean Up"
     (ls -t|head -n $REV_LIMIT;ls)|sort|uniq -u|xargs rm -r
 fi
 ) 200>/var/lock/post-recive-hook.lock
