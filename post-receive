@@ -12,6 +12,9 @@ cd $work_tree
 
 commits=`git log -n $REV_LIMIT --pretty=format:%H`
 
+(
+flock -x 200 || exit 1
+
 for commit in $commits; do
     module_name="$module_prefix$commit";
     module_path="$rules_path/$module_name";
@@ -44,6 +47,7 @@ for commit in $commits; do
 done
 
 # Clean up
-if [ `ls | wc -l` > $REV_LIMIT ]; then
+if [ `ls | wc -l` -gt $REV_LIMIT ]; then
     (ls -t|head -n $REV_LIMIT;ls)|sort|uniq -u|xargs rm -r
 fi
+) 200>/var/lock/post-recive-hook.lock
