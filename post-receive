@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
 # Split last $REV_LIMIT commits to separated dirs
+set -e
 
 work_tree="/gns-rules.git"
 rules_path="/gns-rules"
