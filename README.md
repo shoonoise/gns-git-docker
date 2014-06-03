@@ -14,7 +14,7 @@ Start docker container:
 ```bash
 git clone https://github.com/shoonoise/git-server-docker.git
 cd git-server-docker
-docker build -t="srv" .
+docker build -t="git-srv" .
 docker run  -d -e KEY="`cat ~/.ssh/id_rsa.pub`" -v /tmp/gns-rules:/gns-rules:rw -p 2222:22 git-srv
 ```
 
