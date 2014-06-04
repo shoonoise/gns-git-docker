@@ -34,6 +34,6 @@ RUN chmod 0755 /var/run/sshd
 ADD run.sh /
 
 EXPOSE 22
-VOLUME ["/keys", "/gns-rules", "gns-rules.git"]
+VOLUME ["/keys", "/gns-rules", "/gns-rules.git"]
 
 CMD /run.sh
