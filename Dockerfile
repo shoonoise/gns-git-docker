@@ -24,9 +24,6 @@ RUN git --bare init
 ADD post-receive /gns-rules.git/hooks/
 
 RUN mkdir /gns-rules
-RUN chown -R git /gns-rules
-# Looks like some Docker's issue. `chmod -R git /gns-rules.git` does not work.
-RUN chmod -R 777 /gns-rules.git
 
 ADD sshd_config /etc/ssh/sshd_config
 RUN mkdir /var/run/sshd/
