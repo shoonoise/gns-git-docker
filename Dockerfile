@@ -9,14 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 RUN apt-get install -y git openssh-server
 
-RUN adduser --disabled-password --gecos "" --shell=/usr/bin/git-shell  git
-RUN mkdir /home/git/.ssh
-RUN touch /home/git/.ssh/authorized_keys
-
-# All keys from `/keys/pub_keys` will be added as authorized keys
-# Also you can mount  this dir as a voulme to add keys
-RUN mkdir /keys
-RUN touch /keys/pub_keys
+RUN useradd -o -u 0 --system --shell=/usr/bin/git-shell  git
 
 ADD post-receive /post-receive
 RUN mkdir /gns-rules.git
