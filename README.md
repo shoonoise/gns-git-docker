@@ -36,6 +36,7 @@ Fast start
 - Create new repo (*you can skip it, if you already have one*):
 
   ```bash
+  mkdir project
   cd project
   git init
   ```
