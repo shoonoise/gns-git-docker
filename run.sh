@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+
+# Init bare repo
+cd /gns-rules.git
+git init --bare
+
+# Copy hook
+cp /post-receive /gns-rules.git/hooks/
+
 # Fix permissions
 chown -R git /gns-rules
 chown -R git /gns-rules.git

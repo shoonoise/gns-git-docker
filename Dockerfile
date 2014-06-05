@@ -18,11 +18,8 @@ RUN touch /home/git/.ssh/authorized_keys
 RUN mkdir /keys
 RUN touch /keys/pub_keys
 
+ADD post-receive /post-receive
 RUN mkdir /gns-rules.git
-WORKDIR /gns-rules.git
-RUN git --bare init
-ADD post-receive /gns-rules.git/hooks/
-
 RUN mkdir /gns-rules
 
 ADD sshd_config /etc/ssh/sshd_config
