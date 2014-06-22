@@ -1,7 +1,7 @@
 # Dockerfile for Git
 # Special for GNS project, but may be used for common purposes
 
-FROM yandex/ubuntu
+FROM yandex/trusty
 MAINTAINER Alexander Kushnarev <avkushnrev@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
