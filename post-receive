@@ -3,8 +3,8 @@
 # Split last $REV_LIMIT commits to separated dirs
 set -e
 
-work_tree="/gns-rules.git"
-rules_path="/gns-rules"
+work_tree="/var/lib/gns/rules.git"
+rules_path="/var/lib/gns/rules"
 module_prefix='git_'
 
 [ -z "$REV_LIMIT" ] && REV_LIMIT=10
