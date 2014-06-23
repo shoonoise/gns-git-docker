@@ -21,6 +21,6 @@ RUN chmod 0755 /var/run/sshd
 ADD run.sh /
 
 EXPOSE 22
-VOLUME ["/etc/ssh/authorized_keys", "/var/lib/gns/rules", "/var/lib/gns/rules.git"]
+VOLUME ["/etc/ssh/", "/var/lib/gns/rules", "/var/lib/gns/rules.git"]
 
 CMD /run.sh
