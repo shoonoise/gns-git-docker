@@ -6,7 +6,7 @@ cd /var/lib/gns/rules.git
 git init --bare
 
 # Copy hook
-ln -s /post-receive /var/lib/gns/rules.git/hooks/
+ln -fs /post-receive /var/lib/gns/rules.git/hooks/
 
 # Add authorized keys wich be able to push in this repo
 echo $KEY >> /etc/ssh/authorized_keys
