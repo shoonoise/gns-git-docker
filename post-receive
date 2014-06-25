@@ -12,6 +12,7 @@ module_prefix='git_'
 cd $work_tree
 
 commits=`git log -n $REV_LIMIT --pretty=format:%H`
+last_commit = `git log -n 1 --pretty=format:%H`
 
 (
 flock -x 200 || exit 1
@@ -46,6 +47,8 @@ for commit in $commits; do
     cd $rules_path
     mv $tmp_path $module_path
 done
+
+ln -f -s $rules_path/last_commit $rules_path/HEAD
 
 # Clean up
 if [ `ls | wc -l` -gt $REV_LIMIT ]; then
